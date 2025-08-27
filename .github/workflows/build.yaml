@@ -1,0 +1,95 @@
+name: MuleSoft CI/CD Pipeline
+
+on:
+  push:
+    branches: [ dev, prod ]
+  pull_request:
+    branches: [ prod ]
+
+env:
+  MAVEN_OPTS: -Xmx1024m
+
+jobs:
+  # JOB 1: Build and Validate - Runs on both push and pull requests
+  # This validates code by compiling and packaging, ensuring no syntax/build errors
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Cache Maven Dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        
+    - name: Build and Validate Application
+      run: mvn clean compile package -DskipTests
+      
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: mule-application
+        path: target/*.jar
+
+  # JOB 2: Deploy to Development - Only runs on push to develop branch
+  # Will NOT run on pull requests (build job above handles PR validation)
+  deploy-dev:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
+    environment: dev
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Deploy to Development
+      run: |
+        mvn clean deploy -DskipTests -DmuleDeploy \
+        -Danypoint.username="${{ secrets.ANYPOINT_USERNAME }}" \
+        -Danypoint.password="${{ secrets.ANYPOINT_PASSWORD }}" \
+        -Dcloudhub.application.name="demo-cicd-api-dev" \
+        -Denv=dev
+
+  # JOB 3: Deploy to Production - Only runs on push to main branch  
+  # Will NOT run on pull requests (build job above handles PR validation)
+  deploy-prod:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/prod' && github.event_name == 'push'
+    environment: prod
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Deploy to Production
+      run: |
+        mvn clean deploy -DskipTests -DmuleDeploy \
+        -Danypoint.username="${{ secrets.ANYPOINT_USERNAME }}" \
+        -Danypoint.password="${{ secrets.ANYPOINT_PASSWORD }}" \
+        -Dcloudhub.application.name="demo-cicd-api-prod" \
+        -Denv=prod \
+        -Dcloudhub.environment="Prod" \
+        -Dcloudhub.worker.type="SMALL"
