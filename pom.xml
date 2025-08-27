@@ -17,7 +17,7 @@
 		<mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
 		
 		<cloudhub.application.name>demo-cicd-api-${env}</cloudhub.application.name>
-        <cloudhub.environment>Dev</cloudhub.environment>
+        <cloudhub.environment>dev</cloudhub.environment>
         <env>dev</env>
 	</properties>
 

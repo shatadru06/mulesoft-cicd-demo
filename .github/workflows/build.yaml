@@ -62,6 +62,7 @@ jobs:
       run: |
         mvn clean deploy -DskipTests -DmuleDeploy -settings .maven/settings.xml \
         -Dcloudhub.application.name="demo-cicd-api-dev" \
+        -Dcloudhub.environment="dev" \
         -Denv=dev
 
   # JOB 3: Deploy to Production - Only runs on push to main branch  
@@ -87,5 +88,5 @@ jobs:
         mvn clean deploy -DskipTests -DmuleDeploy -settings .maven/settings.xml \
         -Dcloudhub.application.name="demo-cicd-api-prod" \
         -Denv=prod \
-        -Dcloudhub.environment="Production" \
+        -Dcloudhub.environment="prod" \
         -Dcloudhub.worker.type="SMALL"
