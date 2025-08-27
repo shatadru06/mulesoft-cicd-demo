@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<settings>
+
+  <pluginGroups>
+    <pluginGroup>org.mule.tools</pluginGroup>
+  </pluginGroups>
+   <servers>
+    <server>
+        <id>Exchange2</id>
+        <username>~~~Client~~~</username>
+        <password>92b56faad4be475383c817c897f465ec~?~a9Fc21A41D8A4231a76e250a4416BB90</password>
+    </server>
+   </servers>
+</settings>
