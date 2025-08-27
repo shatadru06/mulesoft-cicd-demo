@@ -17,8 +17,6 @@
 		<mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
 		
 		<cloudhub.application.name>demo-cicd-api-${env}</cloudhub.application.name>
-        <cloudhub.environment>dev</cloudhub.environment>
-        <env>dev</env>
 	</properties>
 
 	<build>
@@ -38,7 +36,7 @@
                         <uri>https://anypoint.mulesoft.com</uri>
                         <provider>MC</provider>
                         <businessGroupId>0c5afb74-0b0b-415a-a863-8da8b128dbaa</businessGroupId>
-                        <environment>${cloudhub.environment}</environment>
+                        <environment>${env}</environment>
                         <target>Cloudhub-US-East-2</target>
                         <muleVersion>4.9.5</muleVersion>
                         <server>Exchange2</server>
