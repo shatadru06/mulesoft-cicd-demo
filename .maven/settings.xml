@@ -8,7 +8,7 @@
     <server>
         <id>Exchange2</id>
         <username>~~~Client~~~</username>
-        <password>92b56faad4be475383c817c897f465ec~?~a9Fc21A41D8A4231a76e250a4416BB90</password>
+        <password>${{ secrets.ANYPOINT_CLIENT_ID }}~?~${{ secrets.ANYPOINT_CLIENT_SECRET }}</password>
     </server>
    </servers>
 </settings>

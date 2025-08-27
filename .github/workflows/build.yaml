@@ -61,8 +61,6 @@ jobs:
     - name: Deploy to Development
       run: |
         mvn clean deploy -DskipTests -DmuleDeploy \
-        -Danypoint.client_id="${{ secrets.ANYPOINT_CLIENT_ID }}" \
-        -Danypoint.client_secret="${{ secrets.ANYPOINT_CLIENT_SECRET }}" \
         -Dcloudhub.application.name="demo-cicd-api-dev" \
         -Denv=dev
 
@@ -87,8 +85,6 @@ jobs:
     - name: Deploy to Production
       run: |
         mvn clean deploy -DskipTests -DmuleDeploy \
-        -Danypoint.client_id="${{ secrets.ANYPOINT_CLIENT_ID }}" \
-        -Danypoint.client_secret="${{ secrets.ANYPOINT_CLIENT_SECRET }}" \
         -Dcloudhub.application.name="demo-cicd-api-prod" \
         -Denv=prod \
         -Dcloudhub.environment="Production" \
