@@ -1,0 +1,8 @@
+# HTTP Configuration
+http:
+  port: "8081"
+
+# Application Configuration  
+app:
+  name: "demo-cicd-api"
+  version: "1.0.0"

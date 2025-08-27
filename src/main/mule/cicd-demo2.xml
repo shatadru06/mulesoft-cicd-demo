@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http"
+      xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+                          http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+    
+    <http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config">
+        <http:listener-connection host="0.0.0.0" port="${http.port}" />
+    </http:listener-config>
+    
+    <configuration-properties doc:name="Configuration properties" doc:id="1475a743-9b52-4569-add7-2f9f622d08cf" file="dev.yaml" />
+	<flow name="demo-cicd-apiFlow" doc:id="bba32abf-a194-4f4f-99d2-af9e34283471">
+        <http:listener doc:name="Listener" config-ref="HTTP_Listener_config" path="/api/health"/>
+        <set-payload value='#[output application/json --- {"status": "OK", "message": "API is running", "timestamp": now()}]' 
+                     doc:name="Set Payload" mimeType="application/json"/>
+    </flow>
+    
+    <flow name="demo-cicd-api-users" doc:id="f61119f3-8255-4b06-9d4b-3bbee50a3390">
+        <http:listener doc:name="Listener" config-ref="HTTP_Listener_config" path="/api/users"/>
+        <set-payload value='#[output application/json --- [{"id":1,"name":"John Doe"},{"id":2,"name":"Jane Smith"}]]' 
+                     doc:name="Set Users" mimeType="application/json"/>
+    </flow>
+</mule>
