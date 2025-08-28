@@ -7,7 +7,7 @@
     <server>
         <id>Exchange2</id>
         <username>~~~Client~~~</username>
-        <password>${secrets.ANYPOINT_CLIENT_ID}~?~${secrets.ANYPOINT_CLIENT_SECRET}</password>
+        <password>${client_id}~?~${client_secret}</password>
     </server>
    </servers>
 </settings>
