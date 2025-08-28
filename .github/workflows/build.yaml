@@ -92,7 +92,8 @@ jobs:
         
     - name: Deploy to Development
       run: |
-        mvn clean deploy -DskipTests -DmuleDeploy -settings .maven/settings.xml \
+        mvn mule:deploy -DmuleDeploy \
+        --settings .maven/settings.xml \
         -Dcloudhub.application.name="demo-cicd-api-dev" \
         -Denv=dev
 
@@ -116,7 +117,8 @@ jobs:
         
     - name: Deploy to Production
       run: |
-        mvn clean deploy -DskipTests -DmuleDeploy -settings .maven/settings.xml \
+        mvn mule:deploy -DmuleDeploy \
+        --settings .maven/settings.xml \
         -Dcloudhub.application.name="demo-cicd-api-prod" \
         -Denv=prod \
         -Dcloudhub.worker.type="SMALL"
