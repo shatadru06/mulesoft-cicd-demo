@@ -13,7 +13,7 @@
     <configuration-properties doc:name="Configuration properties" doc:id="1475a743-9b52-4569-add7-2f9f622d08cf" file="dev.yaml" />
 	<flow name="demo-cicd-apiFlow" doc:id="bba32abf-a194-4f4f-99d2-af9e34283471">
         <http:listener doc:name="Listener" config-ref="HTTP_Listener_config" path="/api/health"/>
-        <set-payload value='#[output application/json --- {"status": "OK", "message": "API is running", "timestamp": now()}]' 
+        <set-payload value='#[output application/json --- {"status": "OK", "message": "API is running now", "timestamp": now()}]' 
                      doc:name="Set Payload" mimeType="application/json"/>
     </flow>
     
