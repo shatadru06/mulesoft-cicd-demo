@@ -75,7 +75,7 @@ jobs:
   # JOB 3: Deploy to Development - Only runs on push to develop branch
   # Will NOT run on pull requests (build job above handles PR validation)
   deploy-dev:
-    needs: build
+    needs: publish
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
     environment: dev
@@ -99,7 +99,7 @@ jobs:
   # JOB 4: Deploy to Production - Only runs on push to main branch  
   # Will NOT run on pull requests (build job above handles PR validation)
   deploy-prod:
-    needs: build
+    needs: publish
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/prod' && github.event_name == 'push'
     environment: prod
