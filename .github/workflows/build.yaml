@@ -60,7 +60,6 @@ jobs:
         
     # Auto-bump version only for prod branch
     - name: Bump Version for Production
-      env:
       if: github.ref == 'refs/heads/prod'
       run: |
         echo "Bumping version for prod..."
