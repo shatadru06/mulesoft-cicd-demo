@@ -15,6 +15,7 @@
         <http:listener doc:name="Listener" config-ref="HTTP_Listener_config" path="/api/health"/>
         <set-payload value='#[output application/json --- {"status": "OK", "message": "API is running now", "timestamp": now()}]' 
                      doc:name="Set Payload" mimeType="application/json"/>
+		<logger doc:name="Logger" doc:id="bgwmvf" message="The Flow has ended here"/>
     </flow>
     
     <flow name="demo-cicd-api-users" doc:id="f61119f3-8255-4b06-9d4b-3bbee50a3390">
