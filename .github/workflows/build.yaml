@@ -2,9 +2,9 @@ name: MuleSoft CI/CD Pipeline
 
 on:
   push:
-    branches: [ dev, prod ]
+    branches: [ dev, uat, prod ]
   pull_request:
-    branches: [ prod ]
+    branches: [ dev, uat, prod ]
 
 env:
   MAVEN_OPTS: -Xmx1024m
@@ -68,6 +68,16 @@ jobs:
           versions:commit
         echo "Updated version in pom.xml:"
         mvn help:evaluate -Dexpression=project.version -q -DforceStdout
+     # Auto-bump version only for uat branch
+    - name: Bump Version for Production
+      if: github.ref == 'refs/heads/uat'
+      run: |
+        echo "Bumping version for prod..."
+        mvn build-helper:parse-version versions:set \
+          -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.incrementalVersion}-UAT \
+          versions:commit
+        echo "Updated version in pom.xml:"
+        mvn help:evaluate -Dexpression=project.version -q -DforceStdout
 
     - name: Publish to Exchange
       run: |
@@ -98,8 +108,32 @@ jobs:
         --settings .maven/settings.xml \
         -Dcloudhub.application.name="demo-cicd-api-dev" \
         -Denv=dev
+  # JOB 4: Deploy to Development - Only runs on push to uat branch
+  # Will NOT run on pull requests (build job above handles PR validation)
+  deploy-uat:
+    needs: publish
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/uat' && github.event_name == 'push'
+    environment: uat
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Deploy to uat
+      run: |
+        mvn mule:deploy -DmuleDeploy \
+        --settings .maven/settings.xml \
+        -Dcloudhub.application.name="demo-cicd-api-uat" \
+        -Denv=uat
 
-  # JOB 4: Deploy to Production - Only runs on push to main branch  
+  # JOB 5: Deploy to Production - Only runs on push to prod branch  
   # Will NOT run on pull requests (build job above handles PR validation)
   deploy-prod:
     needs: publish
