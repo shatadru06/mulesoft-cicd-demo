@@ -81,7 +81,7 @@ jobs:
 
     - name: Publish to Exchange
       run: |
-        mvn clean deploy -DskipTests -DskipMuleDeploy \
+        mvn -s poc-parent-pom/settings.xml clean deploy -DskipTests -DskipMuleDeploy \
 
   # JOB 3: Deploy to Development - Only runs on push to develop branch
   # Will NOT run on pull requests (build job above handles PR validation)
@@ -104,6 +104,7 @@ jobs:
     - name: Deploy to Development
       run: |
         mvn mule:deploy -DmuleDeploy \
+        -s poc-parent-pom/settings.xml
         -Dcloudhub.application.name="demo-cicd-api-dev" \
         -Denv=dev
   # JOB 4: Deploy to Development - Only runs on push to uat branch
@@ -127,6 +128,7 @@ jobs:
     - name: Deploy to uat
       run: |
         mvn mule:deploy -DmuleDeploy \
+        -s poc-parent-pom/settings.xml
         -Dcloudhub.application.name="demo-cicd-api-uat" \
         -Denv=uat
 
@@ -151,6 +153,7 @@ jobs:
     - name: Deploy to Production
       run: |
         mvn mule:deploy -DmuleDeploy \
+        -s poc-parent-pom/settings.xml
         -Dcloudhub.application.name="demo-cicd-api-prod" \
         -Denv=prod \
         -Dcloudhub.worker.type="SMALL"
