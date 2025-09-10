@@ -7,7 +7,7 @@
 	<artifactId>cicd-demo</artifactId>
 	<version>1.0.11-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
-	<name>cicd-demo3</name>
+	<name>cicd-demo</name>
 	<parent>
 		<groupId>a012d035-75b8-47c0-b907-5217ee60b70e</groupId>
 		<artifactId>poc-parent-pom</artifactId>
