@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>a012d035-75b8-47c0-b907-5217ee60b70e</groupId>
 	<artifactId>cicd-demo</artifactId>
 	<version>1.0.11-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
-
-	<name>cicd-demo</name>
+	<name>cicd-demo3</name>
 	<parent>
 		<groupId>a012d035-75b8-47c0-b907-5217ee60b70e</groupId>
 		<artifactId>poc-parent-pom</artifactId>
 		<version>1.0.0</version>
 	</parent>
-
 	<properties>
 		<cloudhub.application.name>demo-cicd-api-${env}</cloudhub.application.name>
+		<mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
 	</properties>
-
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>${mule.maven.plugin.version}</version>
+				<extensions>true</extensions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
