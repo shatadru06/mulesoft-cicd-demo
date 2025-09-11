@@ -54,13 +54,10 @@
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-            <id>mulesoft-releases</id>
-            <name>MuleSoft Releases Repository</name>
+            <id>Exchange2</id>
+            <name>Exchange2 Repository</name>
+            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${project.groupId}/maven</url>
             <layout>default</layout>
-            <url>https://repository.mulesoft.org/releases/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
         </pluginRepository>
     </pluginRepositories>
 </project>
