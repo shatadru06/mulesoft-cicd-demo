@@ -8,15 +8,17 @@
 	<version>1.0.15-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 	<name>cicd-demo</name>
+    <properties>
+		<cloudhub.application.name>demo-cicd-api-${env}</cloudhub.application.name>
+		<mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
+        <project.groupId>a012d035-75b8-47c0-b907-5217ee60b70e</project.groupId>
+	</properties>
 	<parent>
-		<groupId>a012d035-75b8-47c0-b907-5217ee60b70e</groupId>
+		<groupId>${project.groupId}</groupId>
 		<artifactId>poc-parent-pom</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<properties>
-		<cloudhub.application.name>demo-cicd-api-${env}</cloudhub.application.name>
-		<mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
-	</properties>
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -53,7 +55,7 @@
 		<repository>
             <id>Exchange2</id>
             <name>Exchange2 Repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${parent.groupId}/maven</url>
+            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${project.groupId}/maven</url>
             <layout>default</layout>
         </repository>
     </repositories>
@@ -61,7 +63,7 @@
         <pluginRepository>
             <id>Exchange2</id>
             <name>Exchange2 Repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${parent.groupId}/maven</url>
+            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${project.groupId}/maven</url>
             <layout>default</layout>
         </pluginRepository>
     </pluginRepositories>
