@@ -103,8 +103,7 @@ jobs:
         
     - name: Deploy to Development
       run: |
-        mvn mule:deploy -DmuleDeploy \
-        -s settings.xml
+        mvn -s settings.xml mule:deploy -DmuleDeploy \
         -Dcloudhub.application.name="demo-cicd-api-dev" \
         -Denv=dev
   # JOB 4: Deploy to Development - Only runs on push to uat branch
