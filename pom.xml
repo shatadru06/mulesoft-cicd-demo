@@ -41,15 +41,15 @@
 			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
-	<distributionManagement>
+	<!-- <distributionManagement>
         <repository>
             <id>Exchange2</id>
             <name>Exchange2 Repository</name>
             <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${parent.groupId}/maven</url>
             <layout>default</layout>
         </repository>
-    </distributionManagement>
-	<!-- <repositories>
+    </distributionManagement> -->
+	<repositories>
 		<repository>
             <id>Exchange2</id>
             <name>Exchange2 Repository</name>
@@ -64,5 +64,5 @@
             <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${parent.groupId}/maven</url>
             <layout>default</layout>
         </pluginRepository>
-    </pluginRepositories> -->
+    </pluginRepositories>
 </project>
