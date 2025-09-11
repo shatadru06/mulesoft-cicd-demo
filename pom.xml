@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>a012d035-75b8-47c0-b907-5217ee60b70e</groupId>
 	<artifactId>cicd-demo</artifactId>
-	<version>1.0.14-SNAPSHOT</version>
+	<version>1.0.15-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 	<name>cicd-demo</name>
 	<parent>
@@ -15,7 +15,6 @@
 	</parent>
 	<properties>
 		<cloudhub.application.name>demo-cicd-api-${env}</cloudhub.application.name>
-		<mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
 	</properties>
 	<build>
 		<plugins>
@@ -50,18 +49,6 @@
         </repository>
     </distributionManagement>
 	<repositories>
-		<!-- <repository>
-            <id>anypoint-exchange-v3</id>
-            <name>Anypoint Exchange</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
-            <layout>default</layout>
-        </repository>
-        <repository>
-            <id>mulesoft-releases</id>
-            <name>MuleSoft Releases Repository</name>
-            <url>https://repository.mulesoft.org/releases/</url>
-            <layout>default</layout>
-        </repository> -->
 		<repository>
             <id>Exchange2</id>
             <name>Exchange2 Repository</name>
