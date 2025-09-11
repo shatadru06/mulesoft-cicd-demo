@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>a012d035-75b8-47c0-b907-5217ee60b70e</groupId>
 	<artifactId>cicd-demo</artifactId>
-	<version>1.0.12-SNAPSHOT</version>
+	<version>1.0.13-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 	<name>cicd-demo</name>
 	<parent>
