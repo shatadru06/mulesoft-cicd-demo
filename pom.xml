@@ -48,7 +48,7 @@
         <repository>
             <id>Exchange2</id>
             <name>Exchange2 Repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${project.groupId}/maven</url>
+            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/a012d035-75b8-47c0-b907-5217ee60b70e/maven</url>
             <layout>default</layout>
         </repository>
     </distributionManagement>
@@ -68,7 +68,7 @@
 		<repository>
             <id>Exchange2</id>
             <name>Exchange2 Repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${project.groupId}/maven</url>
+            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/a012d035-75b8-47c0-b907-5217ee60b70e/maven</url>
             <layout>default</layout>
         </repository>
     </repositories>
@@ -76,7 +76,7 @@
         <pluginRepository>
             <id>Exchange2</id>
             <name>Exchange2 Repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${project.groupId}/maven</url>
+            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/a012d035-75b8-47c0-b907-5217ee60b70e/maven</url>
             <layout>default</layout>
         </pluginRepository>
     </pluginRepositories>
