@@ -15,8 +15,6 @@
 	</parent>
     <properties>
 		<cloudhub.application.name>demo-cicd-api-${env}</cloudhub.application.name>
-		<mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
-        <project.groupId>a012d035-75b8-47c0-b907-5217ee60b70e</project.groupId>
 	</properties>
 	<build>
 		<plugins>
@@ -54,7 +52,7 @@
 		<repository>
             <id>Exchange2</id>
             <name>Exchange2 Repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${project.groupId}/maven</url>
+            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/a012d035-75b8-47c0-b907-5217ee60b70/maven</url>
             <layout>default</layout>
         </repository>
     </repositories>
@@ -62,7 +60,7 @@
         <pluginRepository>
             <id>Exchange2</id>
             <name>Exchange2 Repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${project.groupId}/maven</url>
+            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/a012d035-75b8-47c0-b907-5217ee60b70/maven</url>
             <layout>default</layout>
         </pluginRepository>
     </pluginRepositories>
