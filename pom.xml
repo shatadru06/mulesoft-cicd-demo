@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>a012d035-75b8-47c0-b907-5217ee60b70e</groupId>
+	<!-- <groupId>a012d035-75b8-47c0-b907-5217ee60b70e</groupId> -->
 	<artifactId>cicd-demo</artifactId>
 	<version>1.0.15-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
@@ -40,14 +40,14 @@
 			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
-	<!-- <distributionManagement>
+	<distributionManagement>
         <repository>
             <id>Exchange2</id>
             <name>Exchange2 Repository</name>
             <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${parent.groupId}/maven</url>
             <layout>default</layout>
         </repository>
-    </distributionManagement> -->
+    </distributionManagement>
 	<repositories>
 		<repository>
             <id>Exchange2</id>
